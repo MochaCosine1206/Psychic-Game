@@ -1,28 +1,28 @@
 let wins = 0;
 let losses = 0;
-let guesses = 9;
+let guesses = 0;
 let soFar = [];
 let alphabet = "abcdefghijklmnopqrstuvwxyz";
-var emptyString = "";
+let guess = ""
 
-while (emptyString.length < 1) {
-    emptyString += alphabet[Math.floor(Math.random() * alphabet.length)];
-}
-let guess = function () {
-    if (emptyString === guess) {
-        wins = wins++
+
+
+let answer = function () {
+    if (guesses === 0) {
+        return alphabet[Math.floor(Math.random() * alphabet.length)];
     } else {
-        losses = losses++
-        guesses = guesses--
+        return answer;
     }
 }
 
+if (guess === answer) {
+    wins++;
+} else {
+    losses ++;
+    guesses--;
+    soFar.push(guess);
+}
 
 
 
-
-console.log(emptyString);
-console.log(guess("c"));
-console.log(losses);
-console.log(wins);
-console.log(guesses);
+console.log(answer();
