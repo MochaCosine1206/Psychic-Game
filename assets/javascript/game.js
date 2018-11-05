@@ -1,28 +1,37 @@
-let wins = 0;
-let losses = 0;
-let guesses = 0;
-let soFar = [];
 let alphabet = "abcdefghijklmnopqrstuvwxyz";
-let guess = ""
+var wins = 0;
+var losses = 0;
+var guesses = 10;
+var guessArr = [];
+var answer = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+document.onkeypress = function (event) {
+    var guess = event.key;
 
 
-
-let answer = function () {
-    if (guesses === 0) {
-        return alphabet[Math.floor(Math.random() * alphabet.length)];
+    if (guess === answer) {
+        wins ++;
+        guesses = 10;
     } else {
-        return answer;
+        guesses--;
     }
+
+    if (guesses === 0) {
+        losses++
+    }
+
+
+document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
+document.getElementById("guesses").innerHTML = guesses;
+document.getElementById("soFar").innerHTML = guessArr
+document.getElementById("secret").innerHTML = answer;
+
 }
 
-if (guess === answer) {
-    wins++;
-} else {
-    losses ++;
-    guesses--;
-    soFar.push(guess);
-}
+// let userEntry = document.onkeyup = function (event) {
+//     soFarCount.textContent = event.key;
+// };
 
 
 
-console.log(answer();
